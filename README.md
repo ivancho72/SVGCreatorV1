@@ -4,7 +4,7 @@ This is a project created with yeoman using the angular-fullstack generator. It 
 
 Commands to bring up a new codio machine:
 
-npm install -g grunt yo bower
-bower install
-npm install
+npm install -g grunt yo bower<br>
+bower install<br>
+npm install<br>
 
