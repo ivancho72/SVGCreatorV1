@@ -12,6 +12,10 @@ angular.module('workspaceApp', [
         templateUrl: 'partials/main',
         controller: 'MainCtrl'
       })
+      .when('/about', {
+        templateUrl: 'partials/about',
+        controller: 'AboutCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

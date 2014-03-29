@@ -1,10 +1,82 @@
 @import '../../bower_components/bootstrap/less/bootstrap.less';
-@import 'variables.less';
-@import 'bootswatch.less';
 
 /* Component LESS */
 //@import 'partial/main/sample.less';
 /* Add Component LESS Above */
+
+@stdSpace          : 20px;
+@stdPadding        : 15px;
+@fadeColor         : #777;
+@lineFadeColor     : #e5e5e5;
+@separatorLine     : 1px solid @lineFadeColor;
+@headerHeight      : 40px;
+@screenSize        : 768px;
+@bigContainerSize  : 730px;
+
+/*Space body content a bit*/
+body {
+  padding-top: @stdSpace;
+  padding-bottom: @stdSpace;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  @media only screen and (min-width : @screenSize){
+    padding-right: @stdPadding;
+    padding-left: @stdPadding;    
+  }
+}
+
+/* Custom page header */
+.header {
+  @media only screen and (min-width : @screenSize){
+    border-bottom: @separatorLine;    
+    margin-bottom: @stdPadding * 2;
+  }
+  
+  /* Make the masthead heading the same height as the navigation */
+  h3 {
+    padding-bottom: @stdPadding;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: @headerHeight;
+  }
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: @stdPadding;
+  color: @fadeColor;
+  border-top: @separatorLine;
+}
+
+/* Customize container */
+.container{
+  @media (min-width: @screenSize) {
+      max-width: @bigContainerSize;
+  }  
+}
+
+.container-narrow > hr {
+  margin: @stdPadding * 2 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: @separatorLine;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: @stdSpace * 2 0;
+  
+  p + h4 {
+    margin-top: @stdSpace;
+  }
+}
 
 /* Required for Angular UI Bootstrap */
 .nav, .pagination, .carousel a { cursor: pointer; }
