@@ -42,21 +42,18 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      options: {
-        livereload: 4000
-      },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
-          livereload: true
+          livereload: 4000
         }
       },
       less: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
         tasks: ['less:development', 'copy:styles'],
         options: {
-          livereload: true
+          livereload: 4000
         }
       },
       mochaTest: {
@@ -82,7 +79,7 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
         ],
         options: {
-          livereload: true
+          livereload: 4000
         }
       },
       express: {
@@ -92,7 +89,7 @@ module.exports = function (grunt) {
         ],
         tasks: ['newer:jshint:server', 'express:dev', 'wait'],
         options: {
-          livereload: true,
+          livereload: 4000,
           nospawn: true //Without this option specified express won't be reloaded
         }
       }
