@@ -1,15 +1,29 @@
 <div ng-include="'partials/navbar'"></div>
 
-<div class="jumbotron">
-  <h1>SVG Creator !</h1>
-  <p class="lead">
-    <img src="images/svg.png" alt="SVG Creator!"><br>
-    Created with Bootstrap and Express.
-  </p>
-</div>
-
-<div drawarea id="paper"></div>
-
-<div class="footer">
-  <p>Luna is here!</p>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="jumbotron">
+				<h1>
+					SVG Creator !
+				</h1>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-2 column">
+          <div ng-include="'partials/symbolsbar'"></div>
+				</div>
+				<div class="col-md-8 column">
+          <div class="panel panel-primary">
+            <div class="panel-heading">Diagramming Area</div>
+            <div class="panel-body">
+    					<svg id="paper" drawarea xmlns="http://www.w3.org/2000/svg"/>
+            </div>
+          </div>
+				</div>
+				<div class="col-md-2 column">
+          <div ng-include="'partials/diagrambar'"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

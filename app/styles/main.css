@@ -5780,7 +5780,7 @@ body {
   padding-bottom: 20px;
 }
 /* Everything but the jumbotron gets side spacing for mobile first views */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1020px) {
   .header,
   .marketing,
   .footer {
@@ -5792,7 +5792,7 @@ body {
 .header {
   /* Make the masthead heading the same height as the navigation */
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1020px) {
   .header {
     border-bottom: 1px solid #e5e5e5;
     margin-bottom: 30px;
@@ -5811,9 +5811,9 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 /* Customize container */
-@media (min-width: 768px) {
+@media (min-width: 1020px) {
   .container {
-    max-width: 730px;
+    max-width: 1000px;
   }
 }
 .container-narrow > hr {
@@ -5847,4 +5847,10 @@ body {
   -webkit-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
   transform: translate(0, 0);
+}
+.boxed {
+  -moz-box-shadow: inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 10px #000000;
+  height: 500px;
 }

@@ -10,8 +10,9 @@
 @lineFadeColor     : #e5e5e5;
 @separatorLine     : 1px solid @lineFadeColor;
 @headerHeight      : 40px;
-@screenSize        : 768px;
-@bigContainerSize  : 730px;
+@screenSize        : 1020px;
+@bigContainerSize  : 1000px;
+@panelHeight       : 500px;
 
 /*Space body content a bit*/
 body {
@@ -91,4 +92,11 @@ body {
 	&.fade .modal-dialog {
 		.translate(0,0);
 	}
+}
+
+.boxed{
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+  height:             @panelHeight;
 }

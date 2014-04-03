@@ -1,54 +1,51 @@
 'use strict';
-
-var selectedElement = 0;
-var currentMatrix = 0;
-var currentX = 0;
-var currentY = 0;
-
-function moveElement(evt) {
-  var dx = evt.clientX - currentX;
-  var dy = evt.clientY - currentY;
-  currentMatrix[4] += dx;
-  currentMatrix[5] += dy;
-  var newMatrix = 'matrix(' + currentMatrix.join(' ') + ')';
-  selectedElement.setAttributeNS(null, 'transform', newMatrix);
-  currentX = evt.clientX;
-  currentY = evt.clientY;
-}
-
-function deselectElement() {
-  if(selectedElement !== 0) {
-    selectedElement.removeAttributeNS(null, 'onmousemove');
-    selectedElement.removeAttributeNS(null, 'onmouseout');
-    selectedElement.removeAttributeNS(null, 'onmouseup');
-    selectedElement = 0;
-  }
-}
 angular.module('workspaceApp')
   .directive('drawarea', function () {
     return {
-      template: "<svg><circle id='c1' cx='50' cy='50' r='10' stroke='#000' transform='matrix(1,0,0,1,477,62)' style='-webkit-tap-highlight-color: rgba(0, 0, 0, 0);'></circle></svg>",
-      link: function postLink(scope, element) {
+      template: "<circle id='cr1' cx='100' cy='50' r='50' style='fill:green;'></circle>",
+      link: function (scope, element) {
+        var SVGRoot = element[0];
+        var TrueCoords = SVGRoot.createSVGPoint();
+        var GrabPoint = SVGRoot.createSVGPoint();
+        var DragTarget = null;
+        
+        function GetTrueCoords(evt) {
+          var newScale = SVGRoot.currentScale;
+          var translation = SVGRoot.currentTranslate;
+          TrueCoords.x = (evt.clientX - translation.x) / newScale;
+          TrueCoords.y = (evt.clientY - translation.y) / newScale;
+        }
 
-        function selectElement(evt) {
-          selectedElement = evt.target;
-          currentX = evt.clientX;
-          currentY = evt.clientY;
-          currentMatrix = selectedElement.getAttributeNS(null, 'transform')
-            .slice(7, -1)
-            .split(' ');
-          for(var i = 0; i < currentMatrix.length; i++) {
-            currentMatrix[i] = parseFloat(currentMatrix[i]);
+        function initDrag(evt) {
+          var targetElement = evt.target;
+          DragTarget = targetElement;
+          DragTarget.parentNode.appendChild(DragTarget);
+          DragTarget.setAttributeNS(null, 'pointer-events', 'none');
+          var transMatrix = DragTarget.getCTM();
+          GrabPoint.x = TrueCoords.x - Number(transMatrix.e);
+          GrabPoint.y = TrueCoords.y - Number(transMatrix.f);
+        }
+
+        function Drag(evt) {
+          GetTrueCoords(evt);
+          if(DragTarget) {
+            var newX = TrueCoords.x - GrabPoint.x;
+            var newY = TrueCoords.y - GrabPoint.y;
+            DragTarget.setAttributeNS(null, 'transform', 'translate(' + newX + ',' + newY + ')');
           }
-          selectedElement.setAttributeNS(null, 'onmousemove', 'moveElement(evt)');
-          selectedElement.setAttributeNS(null, 'onmouseout', 'deselectElement()');
-          selectedElement.setAttributeNS(null, 'onmouseup', 'deselectElement()');
+        }
+
+        function endDrag() {
+          if(DragTarget) {
+            DragTarget.setAttributeNS(null, 'pointer-events', 'all');
+            DragTarget = null;
+          }
         }
         
-        var te = element[0].childNodes[0].childNodes.c1;
-        te.style.fill = 'pink';
-        te.setAttributeNS(null, 'transform', 'matrix(1 0 0 1 0 0)');
-        te.onmousedown = selectElement;
+        SVGRoot.onmousedown = initDrag;
+        SVGRoot.onmousemove = Drag;
+        SVGRoot.onmouseup = endDrag;
+
       }
     };
   });

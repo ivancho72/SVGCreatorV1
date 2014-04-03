@@ -1,0 +1,13 @@
+<div ng-controller="symbolsBarCtrl">
+  <accordion close-others="true">
+    <accordion-group heading="{{group.name}}" ng-repeat="group in groups" ng-click="getGroupElements(group)">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="element in group.elements">
+          <a href="#">{{element.name}}</a>
+          <svg viewbox="0 0 80 80" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" svgdata="{{element.graph}}"></svg>
+        </li>
+      </ul>
+    </accordion-group>
+  </accordion>
+</div>
+
