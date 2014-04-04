@@ -8,7 +8,7 @@ angular.module('workspaceApp')
     $scope.getGroupElements = function (group) {
       if(!group.elements) {
         group.elements = [];
-        $http.get('/api/symbolgroup/' + group.id + '/symbols')
+        $http.get('/api/symbolgroup/' + group.groupId + '/symbols')
           .success(function (symbols) {
             group.elements = symbols;
           });
