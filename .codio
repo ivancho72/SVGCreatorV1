@@ -1,14 +1,15 @@
 {
 // Run button configuration
   "commands": {
-        "Grunt Serve": "grunt serve"
+    "Run Local Server": "grunt serve",
+    "Build": "grunt build --force",
+    "Deploy Heroku" : "cd dist && git add . && git commit -a -m 'deployed from codio' && git push heroku master"
   },
 
 // Preview button configuration
   "preview": {
-        "Project Index (static)": "https://{{domain}}/{{index}}",
-        "Current File (static)": "https://{{domain}}/{{filepath}}",
-        "Box URL": "http://{{domain}}:9000/",
-        "Box URL SSL": "https://{{domain}}:9500/"
+        "Codio URL": "http://{{domain}}:9000/",
+        "Deployed URL": "http://svgcreatorv1.herokuapp.com/",
+        "Current File (static)": "https://{{domain}}/{{filepath}}"
   }
 }

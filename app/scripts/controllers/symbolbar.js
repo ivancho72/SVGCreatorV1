@@ -1,6 +1,6 @@
 'use strict';
 angular.module('workspaceApp')
-  .controller('symbolsBarCtrl', function ($scope, $http) {
+  .controller('symbolsBarCtrl', function ($scope, $http, CommService) {
     $http.get('/api/symbolgroups')
       .success(function (groups) {
         $scope.groups = groups;
@@ -13,5 +13,8 @@ angular.module('workspaceApp')
             group.elements = symbols;
           });
       }
+    };
+    $scope.clickSymbol = function(symbol){
+      CommService.publish('SYMBOL_SELECTED', symbol);
     };
   });

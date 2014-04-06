@@ -17,6 +17,10 @@ angular.module('workspaceApp', [
         templateUrl: 'partials/about',
         controller: 'AboutCtrl'
       })
+      .when('/symbols', {
+        templateUrl: 'partials/symbols',
+        controller: 'SymbolsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -4,9 +4,11 @@ This is a project created with yeoman using the angular-fullstack generator. It 
 
 The objective of this web application is to create SVG diagrams based on template icons and save them in a MongoDB.
 
-Commands to bring up a new codio machine:
+#Commands to bring up a new codio machine:
 
-npm install -g grunt yo bower<br>
-bower install<br>
-npm install<br>
+>npm install -g grunt yo bower
+
+>bower install
+
+>npm install
 

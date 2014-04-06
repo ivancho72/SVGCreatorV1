@@ -6,6 +6,9 @@ angular.module('workspaceApp')
       'title': 'Home',
       'link': '/'
     },{
+      'title': 'Symbols',
+      'link': '/symbols'
+    },{
       'title': 'About',
       'link': '/about'
     }];

@@ -2,12 +2,15 @@
 angular.module('workspaceApp')
   .directive('drawarea', function () {
     return {
-      template: "<circle id='cr1' cx='100' cy='50' r='50' style='fill:green;'></circle>",
       link: function (scope, element) {
         var SVGRoot = element[0];
         var TrueCoords = SVGRoot.createSVGPoint();
         var GrabPoint = SVGRoot.createSVGPoint();
         var DragTarget = null;
+        
+        scope.addElementToDrawArea = function(data){
+          element[0].innerHTML += data;
+        };
         
         function GetTrueCoords(evt) {
           var newScale = SVGRoot.currentScale;
